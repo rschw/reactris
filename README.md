@@ -1,44 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <br>
+  <img src="tetris.gif" alt="Preview">
+  <br>
+  reactris = tetris + reactive
+  <br>
+</h1>
 
-## Available Scripts
+<h4 align="center">A tetris clone build with <a href="http://reactjs.org" target="_blank">React</a> and <a href="http://reactivex.io/" target="_blank">RxJS</a>.</h4>
 
-In the project directory, you can run:
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#implementation-ideas">Implementation Ideas</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a>
+</p>
 
-### `npm start`
+This is a prototype implementation of the Tetris game with the reactive programming paradigm in mind.
+Check out the running prototype [here](https://rschw.xyz/reactris) on my website.
+The controls are keyboard based so the game will not work on mobile devices.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Key Features
+- frontend based on [React](http://reactjs.org)
+- reactive game loop implementation based on [RxJS](http://reactivex.io/)
+- event stream visualization is done through a SVG marble diagram
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Implementation Ideas
+- think of everything as a stream which propagates change
+- streams originate from a producer (observable), where data flows through a pipeline, arriving at a consumer (observer)
+    - in tetris the events are produced asynchronously by keyboard inputs and a game interval ticker for the falling tetrimino
+    - the pipeline implements the game that handles the event stream and updates the game state
+    - the consumer in this case is a React component displaying game state as a CSS grid
+- stick to an immutable program by never changing or modifying data after it's been created or its variables have been declared (functional programming)
+- keep the program side effect-free by not depending on data outside the stream (side effects should be implemented by observer)
+- make streams testable
+- visualize event stream with respect to time as marble diagram
 
-### `npm test`
+## Credits
+This software uses the following open source packages:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React](http://reactjs.org)
+- [RxJS](http://reactivex.io/)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
+MIT

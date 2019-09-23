@@ -1,0 +1,12 @@
+/* https://medium.com/compass-true-north/css-grid-maintaining-aspect-ratio-and-managing-overflow-ed54c510782a */
+
+.tetris_grid {
+    display: grid;
+    grid-column-gap: var(--brick-gap);
+    grid-row-gap: var(--brick-gap);
+}
+
+.tetris_brick {
+    background-color: lightgray;
+    padding-bottom: 100%;
+}
